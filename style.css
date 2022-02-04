@@ -1,5 +1,5 @@
 .post-btns {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .post-form {
@@ -19,4 +19,16 @@
 
 .comment-style {
   font-size: 92%;
+}
+
+.edit {
+  display: none;
+}
+
+.editing .edit {
+  display: block;
+}
+
+.editing .post-text {
+  display: none;
 }

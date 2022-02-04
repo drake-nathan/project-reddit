@@ -17,7 +17,7 @@
 
         <div class="posts"></div>
 
-        <form class="post-form">
+        <form class="post-form" onsubmit="event.preventDefault();">
           <h3>Add a New Post</h3>
 
           <div class="form-group">
@@ -31,7 +31,7 @@
 
           <div class="form-group">
             <textarea
-              id="message"
+              id="text"
               type="text"
               class="form-control"
               placeholder="Message"
@@ -44,26 +44,39 @@
     </div>
 
     <script id="post-template" type="text/x-handlebars-template">
-      <div class="post">
+      <div class="post {{#if editing}}editing{{/if}}">
         <div class="post-text">{{text}}</div>
+        <input class="edit" value="{{text}}">
+
         <div class="post-name">
           Posted by:
           <strong>{{name}}</strong>
         </div>
-        <button class="post-btns btn btn-primary btn-xs like-btn">Like</button>
-        <button
-          class="post-btns btn btn-primary btn-xs like-btn"
-        >Comment</button>
-        <button class="post-btns btn btn-primary btn-xs like-btn">Edit</button>
-        <button
-          class="post-btns btn btn-primary btn-xs like-btn"
-        >Delete</button>
+
+        <div class="post-likes">Upvotes: {{likes}}</div>
+
+        <div class="button-row">
+          <button
+            class="post-btns btn btn-primary btn-xs upvote-btn"
+          >Upvote</button>
+          <button
+            class="post-btns btn btn-primary btn-xs downvote-btn"
+          >Downvote</button>
+          <button
+            class="post-btns btn btn-primary btn-xs comment-btn"
+          >Comment</button>
+          <button
+            class="post-btns btn btn-primary btn-xs edit-btn"
+          >Edit</button>
+          <button
+            class="post-btns btn btn-primary btn-xs delete-btn"
+          >Delete</button>
+        </div>
       </div>
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="main.js"></script>
-    <script src="forms.js"></script>
   </body>
 </html>
