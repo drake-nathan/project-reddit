@@ -4,6 +4,7 @@ const template = Handlebars.compile(source);
 
 // jQuery grabbers
 const $postsDiv = $('.posts');
+const $commentsDiv = $('.comments-div');
 const $submitBtn = $('#submit-post');
 const $postForm = $('.post-form');
 const $nameInput = $('#name');
@@ -13,9 +14,17 @@ const $textInput = $('#text');
 const postsArr = [
   {
     name: 'Nathan',
-    text: 'I like beer',
+    text: 'I like beer.',
     likes: 0,
     editing: false,
+    comments: [
+      {
+        commentName: 'Nathan',
+        commentText: 'I like more beerz',
+        commentLikes: 0,
+        editing: false,
+      },
+    ],
   },
 ];
 
@@ -37,6 +46,21 @@ const createPost = (name, text) => {
   });
 
   renderPosts();
+};
+
+const createComment = (postIndex, name, text) => {
+  const post = postsArr[postIndex];
+
+  if (!post.comments) {
+    post.comments = [];
+  }
+
+  post.comments.push({
+    commentName: name,
+    commentText: text,
+    likes: 0,
+    editing: false,
+  });
 };
 
 const submitPost = () => {
@@ -84,6 +108,11 @@ $postsDiv.on('click', '.downvote-btn', (e) => {
   renderPosts();
 });
 
+// comment toggle
+$postsDiv.on('click', '.comment-btn', (e) => {
+  $(e.currentTarget).parent().siblings('.comments-div').toggle();
+});
+
 // edit post
 $postsDiv.on('click', '.edit-btn', (e) => {
   const index = findIndex(e.currentTarget);
@@ -104,4 +133,5 @@ $postsDiv.on('click', '.delete-btn', (e) => {
   renderPosts();
 });
 
+// only necessary if there are hard coded posts in postsArr
 renderPosts();

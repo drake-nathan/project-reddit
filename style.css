@@ -2,22 +2,12 @@
   margin-right: 5px;
 }
 
-.post-form {
-  margin-top: 30px;
-  margin-bottom: 25%;
-}
-
-.comment-form {
-  margin-top: 15px;
-  padding-left: 30px;
-}
-
 /* .edit-form {
   margin-top: 15px;
   padding-left: 30px;
 } */
 
-.comment-style {
+.comment {
   font-size: 92%;
 }
 
